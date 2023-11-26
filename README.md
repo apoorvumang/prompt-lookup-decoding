@@ -69,3 +69,27 @@ Input to this function is the same as to the draft model - all the tokens till t
 ## Datasets
 
 We experiment on 3 datasets, and compare with simple greedy decoding as a baseline. We focus on "input-grounded" tasks where we expect high overlap between input and output - summarization, context-based QA and multi-turn chat.
+
+- **Summarization**: CNN/Dailymail 100 examples
+- **Context-QA**: 100 examples from [HAGRID](https://github.com/project-miracl/hagrid). We concatenate all the evidences to form the context and then do QA
+- **Multi-turn chat**: [MT-bench](https://huggingface.co/datasets/HuggingFaceH4/mt_bench_prompts), all 80 examples. This isn't exactly input-grounded generation but gives an idea of performance on regular chat
+
+## Results
+
+### Summarization and Context-QA
+On both summarization and context-QA, we get a relatively consistent 2.4x speedup (on average). The error bar is stddev, which shows there is quite a bit of variation depending on the example. Throughput of PLD was always more than that of greedy (or within margin of error) - I never saw it giving worse throughput than greedy on any example.
+
+<img width="639" alt="image" src="https://github.com/apoorvumang/prompt-lookup-decoding/assets/1957903/df9aea26-3f49-473c-972a-0d9caa641b1e">
+
+### Multi-turn chat
+On MT-Bench, we see a similar gain on turn 1, but a much smaller gain on turn 0. This is expected - in the first turn, the algorithm can only match n-grams with its own output, since the prompt is pretty small. However this matching with self output gives measurable gains. Again, the error bars are stddev and I didn't see PLD giving worse throughput on any example.
+
+<img width="535" alt="image" src="https://github.com/apoorvumang/prompt-lookup-decoding/assets/1957903/518420ac-b3d2-44af-8f76-b5656b2be6f4">
+
+MT-Bench also has prompt categories. Some observations:
+- roleplay has the worst gain. This is probably because there isn't many ngrams to copy, since each generation is sort of unique.
+- coding has very high gain in 2nd turn, because there is lots of code copying
+- in first turn, extraction has highest gain. This agrees with our hypothesis - in extraction there is definitely n-gram copying, and PLD should help
+
+<img width="709" alt="image" src="https://github.com/apoorvumang/prompt-lookup-decoding/assets/1957903/5bd0b126-3e3f-453c-b04c-05e46b3619ce">
+
