@@ -93,9 +93,10 @@ MT-Bench also has prompt categories. Some observations:
 
 <img width="709" alt="image" src="https://github.com/apoorvumang/prompt-lookup-decoding/assets/1957903/5bd0b126-3e3f-453c-b04c-05e46b3619ce">
 
-## TODOs/Future work
+## TODOs/Thoughts/Future work
 - There's probably better ways to do string matching than the current one, and there are several obvious things to improve eg. what to do when there are multiple matches? Whats the ideal length of continuation?
 - We haven't yet tried sampling, although there's no reason it shouldn't work.
-    - Here, one additional thing to test would be whether prompt lookup while sampling can affect hallucination rates, since this artifically increases probability of sampling exact sequences from input (this was suggest by my colleage Shwetha S)
+    - Here, one additional thing to test would be whether prompt lookup while sampling can affect hallucination rates, since this artifically increases probability of sampling exact sequences from input (this was suggest by my colleague Shwetha S)
 - Testing actual FLOPs impact and tradeoffs is needed
 - Also need to figure out best hyperparams - 3 and 10 were chosen on very little testing
+- It would be an interesting challenge to design the "best lookup function" for decoding, could even be a competition?
