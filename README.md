@@ -2,7 +2,7 @@
 
 Minimal implementation: See [demo notebook](./demo-pld.ipynb) or [colab](https://colab.research.google.com/drive/1ovjH1sg3lXWdm5Rx5EEukB9H_PFJVpJ4?usp=sharing)
 
-**TLDR**: We modify speculative decoding where we replace the draft model with a simple heuristic based on n-gram overlap between LLM input and output. This results in significant speedups (2x-4x) in tasks where there is significant n-gram overlap between prompt and output, with no effect on output quality. This method can be used with any decoder model, and with both greedy and sampling techniques.
+**TLDR**: We modify speculative decoding where we replace the draft model with a simple heuristic based on n-gram overlap between LLM input and output. This results in significant speedups (2x-4x) in input-grounded tasks, with no effect on output quality. This method can be used with any decoder model, and with both greedy and sampling techniques.
 
 
 https://github.com/apoorvumang/prompt-lookup-decoding/assets/1957903/e908de89-ce5c-4156-8ef1-21f169dc1c8f
@@ -68,4 +68,4 @@ Input to this function is the same as to the draft model - all the tokens till t
 
 ## Datasets
 
-We experiment on 3 datasets, and compare with simple greedy decoding as a baseline. The tasks we focus on are those where we expect high overlap between input and output - summarization, context-based QA and multi-turn chat.
+We experiment on 3 datasets, and compare with simple greedy decoding as a baseline. We focus on "input-grounded" tasks where we expect high overlap between input and output - summarization, context-based QA and multi-turn chat.
