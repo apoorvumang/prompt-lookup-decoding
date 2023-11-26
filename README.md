@@ -12,7 +12,7 @@ Coloured token indicate that multiple tokens were generated in a single step.
 
 ## Method
 
-**Intuition**: In several LLM use cases where you have a _long prompt_ (summarization, document QA, multi-turn chat, code editing), there is high n-gram overlap between LLM input (prompt) and LLM output. This could be entity names, phrases, or code chunks that the LLM directly copies from the input while generating the output. Prompt lookup exploits this pattern to speed up autoregressive decoding in LLMs.
+**Intuition**: In several LLM use cases where you're doing _input grounded generation_ (summarization, document QA, multi-turn chat, code editing), there is high n-gram overlap between LLM input (prompt) and LLM output. This could be entity names, phrases, or code chunks that the LLM directly copies from the input while generating the output. Prompt lookup exploits this pattern to speed up autoregressive decoding in LLMs.
 
 Here's an animation explaining with an example (for information on how speculative decoding itself works/gives speedup, please see this excellent [huggingface blog](https://huggingface.co/blog/assisted-generation)):
 
