@@ -100,3 +100,14 @@ MT-Bench also has prompt categories. Some observations:
 - Testing actual FLOPs impact and tradeoffs is needed
 - Also need to figure out best hyperparams - 3 and 10 were chosen on very little testing
 - It would be an interesting challenge to design the "best lookup function" for decoding, could even be a competition?
+
+## How to cite
+```
+@misc{saxena2023prompt,
+    title = {Prompt Lookup Decoding},
+    author = {Apoorv Saxena},
+    year = {2023},
+    month = {November},
+    url = {https://github.com/apoorvumang/prompt-lookup-decoding/}
+}
+```
