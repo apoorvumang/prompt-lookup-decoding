@@ -1,5 +1,7 @@
 # Prompt Lookup Decoding
 
+**UPDATE**: This has been [added to the transformers](https://twitter.com/joao_gante/status/1747322413006643259) library. Please see [this for a code example](https://pastebin.com/bms6XtR4), or simply add `prompt_lookup_num_tokens=10` to your `model.generate(...)` call.
+
 Minimal implementation: See [demo notebook](./demo-pld.ipynb) or [colab](https://colab.research.google.com/drive/1ovjH1sg3lXWdm5Rx5EEukB9H_PFJVpJ4?usp=sharing)
 
 **TLDR**: We modify speculative decoding where we replace the draft model with simple string matching in the prompt to generate candidate token sequences. This results in significant speedups (2x-4x) in input-grounded tasks, with no effect on output quality. This method can be used with any decoder model without model changes or external datastore, and with both greedy and sampling techniques.
