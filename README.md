@@ -1,5 +1,7 @@
 # Prompt Lookup Decoding
 
+**UPDATE 2**: This method is now available in [vLLM as well](https://docs.vllm.ai/en/stable/models/spec_decode.html#speculating-by-matching-n-grams-in-the-prompt) by setting `speculative_model="[ngram]"` 🥳
+
 **UPDATE**: This has been [added to the transformers](https://twitter.com/joao_gante/status/1747322413006643259) library. Please see [this for a code example](https://pastebin.com/bms6XtR4), or simply add `prompt_lookup_num_tokens=10` to your `model.generate(...)` call.
 
 Minimal implementation: See [demo notebook](./demo-pld.ipynb) or [colab](https://colab.research.google.com/drive/1ovjH1sg3lXWdm5Rx5EEukB9H_PFJVpJ4?usp=sharing)
